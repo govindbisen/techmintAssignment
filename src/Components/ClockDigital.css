@@ -1,0 +1,18 @@
+.digital-clock {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.the_clock {
+  background-color: black;
+  color: rgb(231, 229, 229);
+}
+
+.button_start_stop {
+  width: 70px;
+  height: 24px;
+  margin-left: 5px;
+  border: none;
+  cursor: pointer;
+}
