@@ -3,6 +3,8 @@ import CountryTimezoneDropdown from './CountryTimezoneDropdown';
 import { useEffect, useState } from 'react';
 import ClockDigital from './ClockDigital';
 import './Profile.css';
+import Button from './custombutton/Button';
+import Card from './custombutton/Card';
 
 function Profile() {
   const [timeZone, setTimeZoneInProfile] = useState('');
@@ -22,7 +24,6 @@ function Profile() {
       .then((data) => setPostsOfUser(data));
   }, []);
 
-  console.log('userDetails', userDetails);
   const handleGoBack = () => {
     navigate('/'); // Navigates back one step in the history stack
   };
@@ -30,30 +31,39 @@ function Profile() {
   return (
     <div className='profile__container'>
       <div className='profile__container__header'>
-        <button onClick={handleGoBack}>BACK</button>
+        <Button onClick={handleGoBack}>BACK</Button>
         <CountryTimezoneDropdown setTimeZoneInProfile={setTimeZoneInProfile} />
         <ClockDigital timezone={timeZone} />
       </div>
-      <p>name:{userDetails.name}</p>
-      <p>username:{userDetails.username}</p>
-      <p>Email: {userDetails.email}</p>
-      <p>Phone: {userDetails.phone}</p>
-      <p>
-        Address:
-        {userDetails.address &&
-          `${userDetails.address.street}, ${userDetails.address.suite}, ${userDetails.address.city}, ${userDetails.address.zipcode}`}
-      </p>
+      <div className='user__detail__container'>
+        <div>
+          <p>name:{userDetails.name}</p>
+          <p>username:{userDetails.username}</p>
+        </div>
+        <div>
+          <p>
+            Address:
+            {userDetails.address &&
+              `${userDetails.address.street}, ${userDetails.address.suite}, ${userDetails.address.city}, ${userDetails.address.zipcode}`}
+          </p>
+          <p>Email: {userDetails.email}</p>
+          <p>Phone: {userDetails.phone}</p>
+        </div>
+      </div>
+
       {/* <ClockDigital timezone= /> */}
       {/* <ClockDigital timezone='Asia/Dhaka' /> */}
 
-      <div>
+      <div className='user__post__content'>
         {postsOfUser.map((p) => {
           return (
             <>
-              <li key={p.id}>
-                <p>{p.title}</p>
-                <p>{p.body}</p>
-              </li>
+              <>
+                <Card key={p.id}>
+                  <p>{p.title}</p>
+                  <p>{p.body}</p>
+                </Card>
+              </>
             </>
           );
         })}

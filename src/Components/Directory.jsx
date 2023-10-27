@@ -30,8 +30,6 @@ function Directory() {
     return userData;
   };
 
-  console.log(userPostCounts);
-
   return (
     <>
       <h3>DICTIONARY</h3>

@@ -42,7 +42,9 @@ function ClockDigital({ timezone }) {
   return (
     <div>
       <div className='digital-clock'>
-        <p className='the_clock'>{timeToPrint}</p>
+        <p className='the_clock'>
+          {timeToPrint == 'Invalid Date' ? '00:00:00' : timeToPrint}
+        </p>
         <button onClick={toggleClock} className='button_start_stop'>
           {isClockRunning ? 'Pause' : 'Start'}
         </button>

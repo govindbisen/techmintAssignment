@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import './CountryTimezoneDropdown.css';
 
 function CountryTimezoneDropdown(props) {
   const [timezones, setTimezones] = useState([]);
@@ -31,7 +32,11 @@ function CountryTimezoneDropdown(props) {
 
   return (
     <div>
-      <select value={selectedTimezone} onChange={handleTimezoneChange}>
+      <select
+        className='select'
+        value={selectedTimezone}
+        onChange={handleTimezoneChange}
+      >
         <option value='Africa/Abidjan'>Select a timezone</option>
         {timezones.map((timezone, index) => (
           <option key={index} value={timezone}>
